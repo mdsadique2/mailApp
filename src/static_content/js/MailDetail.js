@@ -5,7 +5,7 @@ class MailDetail {
 		this.data = mailData
 		this.parentContainer = parentContainer;
 		this.mailDetailRef = null;
-		
+		this.mailCardWrapperRef = null;
 	}
 
 	registerClickEventEmitter (fn) {
@@ -73,15 +73,20 @@ class MailDetail {
 		var iconAndText = this.getCurrentIconsAndText();
 
 		let star = this._lib.createElement('i', 'tooltip icon ' + iconAndText.star.icon);
-		let starTooltip = this._lib.createElement('i', 'tooltiptext right', iconAndText.star.text);
+		let starTooltip = this._lib.createElement('span', 'tooltiptext right', iconAndText.star.text);
 		star.appendChild(starTooltip);
 
 		let read = this._lib.createElement('i', 'tooltip icon ' + iconAndText.read.icon);
-		let readTooltip = this._lib.createElement('i', 'tooltiptext right', iconAndText.read.text);
+		let readTooltip = this._lib.createElement('span', 'tooltiptext right', iconAndText.read.text);
 		read.appendChild(readTooltip);
+
+		let deleteIcon = this._lib.createElement('i', 'tooltip icon icon-trash-1');
+		let deleteTooltip = this._lib.createElement('span', 'tooltiptext right', 'Delete Message');
+		deleteIcon.appendChild(deleteTooltip);
 
 		starTime.appendChild(star);
 		starTime.appendChild(read);
+		starTime.appendChild(deleteIcon);
 
 		return starTime;
 
@@ -132,11 +137,19 @@ class MailDetail {
 		node.textContent = text;
 	}
 
+	deleteThisCard () {
+		this.parentContainer.innerHTML = '';
+	}
+
 	toggleIcon (event) {
 		var classList = event.target.classList;
-		var type = event.target.className.indexOf('star') > -1 ? 'star' : 'read';
+		if (classList.contains('icon-trash-1')) {
+			this.deleteThisCard();
+			return 'delete';
+		}
 
-		var toolTipNode = event.target.childNodes[0]
+		var type = event.target.className.indexOf('star') > -1 ? 'star' : 'read';
+		var toolTipNode = event.target.childNodes[0];
 		if (type === 'star') {
 			if (classList.contains('selected')) {
 				classList.remove('selected', 'icon-star');
@@ -147,6 +160,7 @@ class MailDetail {
 				classList.add('selected', 'icon-star');
 				toolTipNode.textContent = 'Mark as not important';
 			}
+			return 'star';
 		} else {
 
 			if (classList.contains('selected')) {
@@ -159,6 +173,7 @@ class MailDetail {
 				toolTipNode.textContent = 'Mark as not read';
 
 			}
+			return 'read';
 		}
 	}
 
@@ -174,8 +189,8 @@ class MailDetail {
 		}
 
 		if (classList.contains('icon')) {
-			this.toggleIcon(event);
-			this.clickedFn(event, type);
+			var flag = this.toggleIcon(event);
+			this.clickedFn(event, flag, this.data);
 			return;
 		}
 

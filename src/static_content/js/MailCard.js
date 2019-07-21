@@ -1,8 +1,9 @@
 
 class MailCard {
 
-	constructor (mailData, parentContainer) {
+	constructor (mailData, index, parentContainer) {
 		this.data = mailData
+		this.index = index;
 		this.parentContainer = parentContainer;
 		this.mailCardRef = null;
 		this.mailCardRefLeft = null;
@@ -97,6 +98,15 @@ class MailCard {
 		this.mailCardRefRight.appendChild(preview);
 	}
 
+	createMailCardActionBlock () {
+		var actionNode = this._lib.createElement('div', 'actionConatiner');
+		var deleteIcon = this._lib.createElement('i', 'tooltip icon icon-trash-1');
+		var deleteTooltip = this._lib.createElement('span', 'tooltiptext right', 'Delete Message');
+		deleteIcon.appendChild(deleteTooltip);
+		actionNode.appendChild(deleteIcon);
+		return actionNode;
+	}
+
 	checkForCloning () {
 		var node = this.parentContainer.getElementsByClassName('messageCard');
 		return node;
@@ -142,6 +152,9 @@ class MailCard {
 	cloneNode (node) {
 		var cloneNode = node.cloneNode(true);
 		cloneNode.setAttribute('data-messageId', this.data.id);
+		cloneNode.setAttribute('data-messageIndex', this.index);
+		cloneNode.setAttribute('class', 'messageCard id-'+this.data.id);
+
 		var left = cloneNode.childNodes[0];
 		var right = cloneNode.childNodes[1];
 		this.updateLeftNode(left);
@@ -157,12 +170,15 @@ class MailCard {
 			return;
 		}
 
-		this.mailCardRef = this._lib.createElement('div', 'messageCard');
+		this.mailCardRef = this._lib.createElement('div', 'messageCard id-'+this.data.id);
 		this.mailCardRef.setAttribute('data-messageId', this.data.id);
+		this.mailCardRef.setAttribute('data-messageIndex', this.index);
 		this.createMailCardLeftBlock();
 		this.createMailCardRightBlock();
+		var actionNode = this.createMailCardActionBlock();
 		this.mailCardRef.appendChild(this.mailCardRefLeft);
 		this.mailCardRef.appendChild(this.mailCardRefRight);
+		this.mailCardRef.appendChild(actionNode);
 		this.parentContainer.appendChild(this.mailCardRef);
 	}
 

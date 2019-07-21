@@ -3,7 +3,10 @@ class Common {
 
 	}
 
-	fetchApi (urlToCall) {
+	fetchApi (urlToCall, config) {
+		if (config !== undefined) {
+			return fetch(urlToCall, config);
+		}
 		return fetch(urlToCall)
 	}
 

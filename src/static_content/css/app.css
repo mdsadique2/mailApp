@@ -78,17 +78,29 @@
 }
 
 .messageCard {
+	position: relative;
 	padding: 25px 25px 20px 25px;
 	width: 100%;
 	min-height: 50px;
 	border-bottom: 1px solid var(--border-color);
 	display: flex;
 	justify-content: space-between;
-	cursor: pointer;
+	overflow: hidden;
+	background: #f5f5f5;
+	transition: all 0.25s ease;
 }
 
+.messageCard.selectedCard {
+	background: #fff;
+    box-shadow: 0px 3px 5px -3px #666;
+    z-index: 1;
+	transition: all 0.25s ease;
+}
+
+
 .messageCard:hover {
-    box-shadow: 0px 2px 10px -5px #333;
+	background: #fff;
+    /*box-shadow: 0px 2px 10px -5px #333;*/
 }
 
 .imageIcons {
@@ -138,6 +150,7 @@
 	display: flex;
 	flex-direction: column;
 	padding-left: 5px;
+	cursor: pointer;
 }
 
 .textContainer .senderName {
@@ -300,11 +313,36 @@
 }
 
 
+.messageCard .actionConatiner {
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    right: -100px;
+    width: 12%;
+    top: 0px;
+    padding-top: 25px;
+    background: rgba(255, 255, 255, 0.85);
+	transition: all 0.35s ease;
+    box-shadow: 4px 0px 4px 3px #333;
+    color: var(--text-grey-color-x-light);
+    font-size: 18px;
+}
 
+.messageCard:hover .actionConatiner {
+	right: 0px;
+	transition: all 0.35s ease;
+}
 
+.messageCard .actionConatiner .icon {
+	margin: 10px 0px;
+}
 
-
-
+.icon.icon-trash-1:hover{
+	color: var(--bg-color-1);
+}
 
 
 
