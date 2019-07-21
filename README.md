@@ -1,9 +1,4 @@
-# Front End developer task
-## Overview
 
-We've set up a simple NodeJS application which gives you a bunch of APIs to access and manipulate data. You will need to use these APIs and build an app. You are free to use whatever frontend technologies you like.
-
-We're using jade for templating, you are free to choose whatever suits you. Feel free to make necessary changes in the server side code.
 
 ## API's
 - `GET /api/message/` - get a list of messages
@@ -27,3 +22,6 @@ Here are few details which you might need:
 - Navigate into src directory
 - Execute `npm install` - this installs the dependencies
 - Execute `npm start` - this will start the server
+
+## change app.html to index.html
+## open localhost:8088 to access the app
