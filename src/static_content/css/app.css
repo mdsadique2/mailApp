@@ -1,0 +1,311 @@
+:root {
+  --green-color: #20bf6b; 
+  --blue-color: #2D86E2;
+  --dark-blue-color: #2171c4;
+  --dark-green-color: #16a158;
+  --background-color: #404181;
+  --orange-color: #d35400;
+  --border-color: #ccc;
+  --text-font: 'Quicksand', sans-serif;
+
+  --header-font: 'Quicksand', sans-serif;
+
+
+  --text-grey-color: #666;
+  --text-grey-color-dark: #222;
+  --text-grey-color-light: #888;
+  --text-grey-color-x-light: #aaa;
+
+  --yellow-color: #f39c12;
+  --orange-color: #e67e22;
+
+  --bg-color-5 : #20bf6b;
+  --bg-color-2 : #3867d6;
+  --bg-color-3 : #0fb9b1;
+  --bg-color-4 : #8e44ad;
+  --bg-color-1 : #c0392b;
+
+}
+
+
+.appBody {
+	display: flex;
+	width: 100vW;
+	height: 100vH;
+}
+
+.menuContainer {
+	width: 5%;
+	background: #013244;
+}
+
+
+
+.mainContainer{
+	display: flex;
+	flex-direction: column;
+	height: 100vH;
+	background: #fff;
+	width: 95%;
+}
+
+
+.mainContainer .pageHeader {
+	display: flex;
+	height: 50px;
+	background: #fff;
+	border-bottom: 1px solid var(--border-color);
+	width: 100%;
+}
+
+.mainContainer .messageArea{
+	display: flex;
+	height: calc(100% - 50px);
+}
+
+
+.messageDetailsContainer {
+	width: 70%;
+	background: #f1f1f1;
+	padding: 15px;
+}
+
+.messageCardContainer {
+	width: 30%;
+	border-right: 1px solid var(--border-color);
+	height: 100%;
+	overflow: auto;
+}
+
+.messageCard {
+	padding: 25px 25px 20px 25px;
+	width: 100%;
+	min-height: 50px;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.messageCard:hover {
+    box-shadow: 0px 2px 10px -5px #333;
+}
+
+.imageIcons {
+	width: 12%;
+	max-width: 40px;
+	font-style: var(--text-font);
+	color: var(--text-grey-color-x-light);
+	margin-bottom: 10px;
+	display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.imageIcons .image {
+	display: flex;
+    width: 30px;
+    height: 30px;
+    background: var(--green-color);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: var( --header-font);
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.imageIcons .icon {
+	cursor: pointer;
+	transition: all 0.25s ease;
+	margin: 5px auto;
+}
+
+.imageIcons .icon:hover{
+	color: var(--yellow-color)
+}
+
+.icon.selected {
+	color: var(--orange-color);
+}
+
+.textContainer {
+	width: 85%;
+	display: flex;
+	flex-direction: column;
+	padding-left: 5px;
+}
+
+.textContainer .senderName {
+	font-size: 15px;
+	display: flex;
+	justify-content: space-between;
+	color: var(--text-grey-color-dark);
+    font-family: var( --header-font);
+    font-weight: 500;
+}
+
+.textContainer .date {
+	font-size: 10px;
+	color: var(--text-grey-color-light);
+	margin-top: 3px;
+    font-weight: 300;
+
+}
+
+.textContainer .subject {
+	font-size: 13px;
+	font-weight: normal;
+	margin-bottom: 10px;
+	margin-top: 1px;
+	color: var(--text-grey-color-dark);
+    font-family: var( --header-font);
+}
+
+
+.textContainer .preview {
+	width: 100%;
+	font-size: 12px;
+	color: var(--text-grey-color);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var( --text-font);
+}
+
+
+.detailedMessage {
+	padding: 20px 35px;
+    font-family: var( --text-font);
+    color: var(--text-grey-color-dark);
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0px 4px 10px -6px #333; 
+}
+
+.detailedMessage .messageSubject {
+	font-size: 22px;
+    font-family: var( --header-font);
+    font-weight: 500;
+    border-bottom: 1px solid;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.detailedMessage .senderContainer {
+	display: flex;
+    font-family: var( --header-font);
+    font-weight: 500;
+}
+
+.detailedMessage .thumbnail {
+	width: 40px;
+	height: 40px;
+	background: var(--green-color);
+	color: #fff;
+    text-transform: uppercase;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    font-size: 22px;
+    margin-right: 15px;
+}
+
+.senderContainer .senderName {
+	display: flex;
+	flex-direction: column;
+	max-width: 75%;
+}
+
+.senderContainer .sentTo {
+	font-size: 12px;
+	color: var(--text-grey-color-light);
+}
+
+.senderContainer .sentOthers {
+	color: #fff;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+.senderContainer .sentOthers span {
+	display: inline-block;
+    background: var(--blue-color);
+    padding: 3px 10px;
+    border-radius: 30px;
+    margin-right: 5px;
+}
+
+.senderContainer .starTime {
+	margin-left: auto;
+	color: var(--text-grey-color-light);
+	font-weight: lighter;
+}
+
+.senderContainer .starTime .icon {margin-left: 15px;}
+
+.senderContainer .icon {
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+.senderContainer .icon:hover{
+	color: var(--yellow-color)
+}
+
+.detailedMessage .messageBody {
+	color: var(--text-grey-color);
+	color: var(--text-grey-color);
+    font-weight: normal;
+    font-size: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 55px;
+    line-height: 1.5em;
+    word-spacing: 1px;
+}
+
+
+.imageIcons .image.bg-color-1,
+.detailedMessage .thumbnail.bg-color-1 {
+	background: var(--bg-color-1);
+}
+
+.imageIcons .image.bg-color-2,
+.detailedMessage .thumbnail.bg-color-2 {
+	background: var(--bg-color-2);
+}
+
+.imageIcons .image.bg-color-3,
+.detailedMessage .thumbnail.bg-color-3 {
+	background: var(--bg-color-3);
+}
+
+.imageIcons .image.bg-color-4,
+.detailedMessage .thumbnail.bg-color-4 {
+	background: var(--bg-color-4);
+}
+
+.imageIcons .image.bg-color-5,
+.detailedMessage .thumbnail.bg-color-5 {
+	background: var(--bg-color-5);
+}
+
+
+
+
+
+
+
+
+
+
+

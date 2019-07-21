@@ -1,0 +1,92 @@
+:root {
+  --green-color: #20bf6b; 
+  --blue-color: #2D86E2;
+  --dark-blue-color: #2171c4;
+  --dark-green-color: #16a158;
+  --grey-color: #2c3e50;
+  --orange-color: #d35400;
+  --light-grey-color: #ecf0f1;
+}
+
+
+body{
+	font-family: sans-serif;
+	background: var(--dark-blue-color);
+	padding: 0;
+	margin: 0 ;
+	color: #999;
+}
+
+button {
+	background: #00a8ff;
+    border: 0px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+button:hover {
+	background: #0097e6;
+	transition: all 0.25s ease;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+a {
+	color: #00a8ff;
+	cursor: pointer;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a:hover {
+	color: #0097e6;
+	transition: all 0.25s ease;
+}
+
+a:visited { 
+  color: #2e86de;
+}
+
+.flex {
+	display: flex;
+}
+
+.justifyContentCenter {
+	justify-content: center;
+}
+
+.alignSelfCenter {
+	align-self: center;
+}
+
+.shadow {
+	box-shadow: 0px 0px 10px -5px #666;
+}
+
+.width100 {
+	width: 100%;
+}
+
+.cursorPointer {
+	cursor: pointer;
+}
+
+.card {
+	border-radius: 4px;
+    box-shadow: 0px 0px 10px -5px #666;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+
+
+
+

@@ -1,0 +1,31 @@
+:root {
+  --green-color: #20bf6b; 
+  --blue-color: #2D86E2;
+  --dark-blue-color: #2171c4;
+  --dark-green-color: #16a158;
+  --grey-color: #2c3e50;
+  --orange-color: #d35400;
+  --light-grey-color: #ecf0f1;
+}
+
+.mainContainer{
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	width: 100vW;
+	height: 100vH;
+	background: var(--dark-blue-color);
+}
+
+.messageClassContainer {
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+}
+
+.mesasageCard {
+	width: 100%;
+	height: 100px;
+	border-radius: 4px;
+	background: 
+}

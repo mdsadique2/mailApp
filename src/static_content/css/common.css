@@ -1,0 +1,128 @@
+:root {
+  --green-color: #20bf6b; 
+  --blue-color: #2D86E2;
+  --dark-blue-color: #2171c4;
+  --dark-green-color: #16a158;
+  --background-color: #404181;
+  --orange-color: #d35400;
+  --border-color: #ccc;
+  --text-font: 'Quicksand', sans-serif;
+  --header-font: 'Quicksand', sans-serif;
+
+
+  --text-grey-color: #666;
+  --text-grey-color-dark: #222;
+  --text-grey-color-light: #888;
+  --text-grey-color-x-light: #aaa;
+
+  --yellow-color: #f39c12;
+  --orange-color: #e67e22;
+
+}
+
+body{
+	font-family: 'Lato', sans-serif;
+	padding: 0;
+	margin: 0 ;
+	color: var(--text-grey-color);
+}
+
+button {
+	background: #00a8ff;
+    border: 0px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+button:hover {
+	background: #0097e6;
+	transition: all 0.25s ease;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+a {
+	color: #00a8ff;
+	cursor: pointer;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a:hover {
+	color: #0097e6;
+	transition: all 0.25s ease;
+}
+
+a:visited { 
+  color: #2e86de;
+}
+
+.headerFont {
+	font-family: 'Work Sans', sans-serif;
+}
+
+
+.flex {
+	display: flex;
+}
+
+.justifyContentCenter {
+	justify-content: center;
+}
+
+.alignSelfCenter {
+	align-self: center;
+}
+
+.shadow {
+	box-shadow: 0px 0px 10px -5px #666;
+}
+
+.width100 {
+	width: 100%;
+}
+
+.cursorPointer {
+	cursor: pointer;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+	visibility: hidden;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	padding: 5px 15px;
+	font-size: 12px;
+	min-width: 80px;
+	position: absolute;
+	z-index: 1;
+	font-weight: lighter;
+}
+
+.tooltip .tooltiptext.right {
+	right: 0px;
+	top: 20px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+
+
+
+
