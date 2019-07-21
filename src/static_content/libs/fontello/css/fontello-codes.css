@@ -1,4 +1,5 @@
 
+.icon-paper-plane:before { content: '\e800'; } /* '' */
 .icon-inbox:before { content: '\e801'; } /* '' */
 .icon-attach:before { content: '\e802'; } /* '' */
 .icon-calendar:before { content: '\e803'; } /* '' */
@@ -6,4 +7,6 @@
 .icon-star:before { content: '\e805'; } /* '' */
 .icon-mail:before { content: '\e806'; } /* '' */
 .icon-trash-1:before { content: '\e807'; } /* '' */
+.icon-doc-text-inv:before { content: '\f15c'; } /* '' */
 .icon-envelope-open-o:before { content: '\f2b7'; } /* '' */
+.icon-user-o:before { content: '\f2c0'; } /* '' */

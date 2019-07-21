@@ -37,9 +37,41 @@
 .menuContainer {
 	width: 5%;
 	background: #013244;
+	font-family: var(--header-font);
+	padding-top: 50px;
+}
+
+.menuContainer .menuItem {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	padding: 20px 0px 10px 0px;
+	cursor: pointer;
+	color: #f7efef;
+	transition: all 0.25s ease;
+	border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+}
+
+.menuItem.selectedItem, .menuItem:hover {
+	background: #f7efef;
+    color: #013244;
+    border-right: 2px solid #013244;
+    border-left: 2px solid #013244;
+	transition: all 0.25s ease;
 }
 
 
+.menuItem .icon {
+	font-size: 18px;
+    margin-bottom: 5px;
+}
+
+
+.menuItem span {
+	font-size: 11px;
+	font-weight: lighter;
+}
 
 .mainContainer{
 	display: flex;
@@ -56,7 +88,30 @@
 	background: #fff;
 	border-bottom: 1px solid var(--border-color);
 	width: 100%;
+	flex-direction: row-reverse;
+	color: var(--blue-color);
+	box-sizing: border-box;
+	padding-right: 20px;
+	padding-top: 8px;
 }
+
+.pageHeader .icon {
+	width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    background: #eee;
+}
+
+.pageHeader .userName {
+	font-weight: lighter;
+	padding-top: 6px;
+}
+
 
 .mainContainer .messageArea{
 	display: flex;
@@ -68,6 +123,7 @@
 	width: 70%;
 	background: #f1f1f1;
 	padding: 15px;
+	position: relative;
 }
 
 .messageCardContainer {
@@ -75,10 +131,12 @@
 	border-right: 1px solid var(--border-color);
 	height: 100%;
 	overflow: auto;
+	position: relative;
 }
 
 .messageCard {
 	position: relative;
+	z-index: 2;
 	padding: 25px 25px 20px 25px;
 	width: 100%;
 	min-height: 50px;
@@ -86,15 +144,16 @@
 	display: flex;
 	justify-content: space-between;
 	overflow: hidden;
-	background: #f5f5f5;
+	background: #fff;
 	transition: all 0.25s ease;
 }
 
 .messageCard.selectedCard {
 	background: #fff;
     box-shadow: 0px 3px 5px -3px #666;
-    z-index: 1;
+    z-index: 3;
 	transition: all 0.25s ease;
+	border-right: 5px solid var(--blue-color);
 }
 
 
@@ -200,6 +259,8 @@
     border-radius: 4px;
     border: 1px solid var(--border-color);
     box-shadow: 0px 4px 10px -6px #333; 
+    z-index: 2;
+    position: relative;
 }
 
 .detailedMessage .messageSubject {
@@ -236,6 +297,7 @@
 	display: flex;
 	flex-direction: column;
 	max-width: 75%;
+    cursor: pointer;
 }
 
 .senderContainer .sentTo {
@@ -247,6 +309,7 @@
 	color: #fff;
     font-size: 10px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .senderContainer .sentOthers span {
@@ -344,6 +407,16 @@
 	color: var(--bg-color-1);
 }
 
+.placeholderMessage {
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	top: 150px;
+	left: 0px;
+	font-family: var(--header-font);
+	font-size: 18px;
+	z-index: 1;
+}
 
 
 

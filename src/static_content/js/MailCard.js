@@ -10,7 +10,7 @@ class MailCard {
 		this.mailCardRefRight = null;
 	}
 
-
+	// returns icon and tooltip
 	getCurrentIconsAndText () {
 		var obj = {
 			read: {},
@@ -37,8 +37,9 @@ class MailCard {
 
 	}
 
-	createMailCardLeftBlock () {
 
+	// create left section in the card
+	createMailCardLeftBlock () {
 		this.mailCardRefLeft = this._lib.createElement('div', 'imageIcons');
 
 		var nameText = this.data.participants[0];
@@ -58,9 +59,10 @@ class MailCard {
 		this.mailCardRefLeft.appendChild(imageCircle);
 		this.mailCardRefLeft.appendChild(star);
 		this.mailCardRefLeft.appendChild(read);
-
 	}
 
+
+	// manipulates the timestamp
 	getDate () {
 		var d = new Date(this.data.ts);
 		var obj = {
@@ -73,6 +75,7 @@ class MailCard {
 		return obj;
 	}
 
+	// checks and add number for more than 1 participant
 	senderAppender () {
 		var appender = '';
 		if (this.data.participants.length > 1) {
@@ -82,6 +85,7 @@ class MailCard {
 	}
 
 
+	// create right section in the card
 	createMailCardRightBlock () {
 		this.mailCardRefRight = this._lib.createElement('div', 'textContainer');
 		var sender = this._lib.createElement('div', 'senderName', this.data.participants[0] + this.senderAppender());
@@ -98,6 +102,8 @@ class MailCard {
 		this.mailCardRefRight.appendChild(preview);
 	}
 
+
+	// creates the action block, at present only delete action is available
 	createMailCardActionBlock () {
 		var actionNode = this._lib.createElement('div', 'actionConatiner');
 		var deleteIcon = this._lib.createElement('i', 'tooltip icon icon-trash-1');
@@ -107,12 +113,32 @@ class MailCard {
 		return actionNode;
 	}
 
+
+	// checks if node exist for cloning
 	checkForCloning () {
 		var node = this.parentContainer.getElementsByClassName('messageCard');
 		return node;
 	}
 
 
+	// change status of message to read when preview is opened in detail view
+	changeReadStatus () {
+		var elm = this.mailCardRefLeft.childNodes[2];
+		var toolTipNode = elm.childNodes[0];
+		var classList = elm.classList;
+		if (classList.contains('icon-envelope-open-o')) {
+			elm.classList.add('icon-mail');
+			elm.classList.remove('icon-envelope-open-o', 'selected');
+			toolTipNode.textContent = 'Mark as read';
+		} else {
+			elm.classList.remove('icon-mail');
+			elm.classList.add('icon-envelope-open-o', 'selected');
+			toolTipNode.textContent = 'Mark as not read';
+		}
+	}
+
+
+	// update the node after cloning
 	updateLeftNode (node) {
 		var nameText = this.data.participants[0];
 		var bgClass = 'bg-color-' + ((this.data.id % 5) + 1);
@@ -132,6 +158,8 @@ class MailCard {
 		read.childNodes[0].innerText = iconAndText.read.text;
 	}
 
+
+	// update the node after cloning
 	updateRightNode (node) {
 		var sender = node.childNodes[0];
 
@@ -149,6 +177,8 @@ class MailCard {
 
 	}
 
+
+	// clones the node
 	cloneNode (node) {
 		var cloneNode = node.cloneNode(true);
 		cloneNode.setAttribute('data-messageId', this.data.id);
@@ -157,19 +187,22 @@ class MailCard {
 
 		var left = cloneNode.childNodes[0];
 		var right = cloneNode.childNodes[1];
+		this.mailCardRefLeft = left;
+		this.mailCardRefRight = right;
+		this.mailCardRef = cloneNode;
 		this.updateLeftNode(left);
 		this.updateRightNode(right);
 		this.parentContainer.appendChild(cloneNode);
 	}
 
 
+	// creates the mail preview card
 	createMailCard () {
 		var cloneNode = this.checkForCloning();
 		if (cloneNode.length > 0) {
 			this.cloneNode(cloneNode[0]);
 			return;
 		}
-
 		this.mailCardRef = this._lib.createElement('div', 'messageCard id-'+this.data.id);
 		this.mailCardRef.setAttribute('data-messageId', this.data.id);
 		this.mailCardRef.setAttribute('data-messageIndex', this.index);
@@ -181,8 +214,6 @@ class MailCard {
 		this.mailCardRef.appendChild(actionNode);
 		this.parentContainer.appendChild(this.mailCardRef);
 	}
-
-
 
 }
 

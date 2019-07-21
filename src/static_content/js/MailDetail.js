@@ -8,16 +8,17 @@ class MailDetail {
 		this.mailCardWrapperRef = null;
 	}
 
+	// register an event to be emitted when icons are clicked
 	registerClickEventEmitter (fn) {
 		this.clickedFn = fn;
 	}
 
+	// status of current icon and and tooltip
 	getCurrentIconsAndText () {
 		var obj = {
 			read: {},
 			star: {}
 		}
-
 		if (this.data.isStarred === true) {
 			obj.star.icon = 'icon-star selected';
 			obj.star.text = 'Mark as not important';
@@ -39,7 +40,7 @@ class MailDetail {
 	}
 
 	
-
+	// to operate on timestamp
 	getDate () { 
 		var d = new Date(this.data.ts);
 		var obj = {
@@ -53,6 +54,7 @@ class MailDetail {
 	}
 
 
+	// creat the other email blocks
 	createSentOthers () {
 		var sentOthers = this._lib.createElement('div', 'sentOthers');
 		for (var i=1; i < this.data.participants.length; i++) {
@@ -65,6 +67,8 @@ class MailDetail {
 		return sentOthers;
 	}
 
+
+	// create the timestamp and icon block
 	createTimeIconBlock () {
 		var dateObj = this.getDate(this.data.ts);
 		var dtString = this.monthsArray[dateObj.month + 1].name + ' ' + dateObj.date + ', ' + dateObj.year; // + ' - ' + dateObj.hours +':'+dateObj.minutes;
@@ -76,8 +80,8 @@ class MailDetail {
 		let starTooltip = this._lib.createElement('span', 'tooltiptext right', iconAndText.star.text);
 		star.appendChild(starTooltip);
 
-		let read = this._lib.createElement('i', 'tooltip icon ' + iconAndText.read.icon);
-		let readTooltip = this._lib.createElement('span', 'tooltiptext right', iconAndText.read.text);
+		let read = this._lib.createElement('i', 'tooltip icon icon-envelope-open-o selected');
+		let readTooltip = this._lib.createElement('span', 'tooltiptext right', 'Mark as not read');
 		read.appendChild(readTooltip);
 
 		let deleteIcon = this._lib.createElement('i', 'tooltip icon icon-trash-1');
@@ -92,7 +96,7 @@ class MailDetail {
 
 	}
 
-
+	// create mail sender block
 	mailSenderContainer () {
 		var senderContainer = this._lib.createElement('div', 'senderContainer');
 
@@ -120,16 +124,20 @@ class MailDetail {
 		this.mailCardRef.appendChild(senderContainer);
 	}
 
+
+	// create mail subject UI
 	mailSubject () {
 		var subject = this._lib.createElement('div', 'messageSubject', this.data.subject);
 		this.mailCardRef.appendChild(subject);
 	}
 
+	// create mail text body UI
 	mailBody () {
 		var message = this._lib.createElement('div', 'messageBody', this.data.body);
 		this.mailCardRef.appendChild(message);
 	}
 
+	// toggles between name and emailID
 	toggleEmailName (event) {
 		var node = event.target.childNodes[0];
 		var dataSet = event.target.dataset;
@@ -137,10 +145,13 @@ class MailDetail {
 		node.textContent = text;
 	}
 
+	// deletes the detailed card
 	deleteThisCard () {
 		this.parentContainer.innerHTML = '';
 	}
 
+
+	// toggle the icons when clicked
 	toggleIcon (event) {
 		var classList = event.target.classList;
 		if (classList.contains('icon-trash-1')) {
@@ -177,10 +188,9 @@ class MailDetail {
 		}
 	}
 
-
+	// click event handlers for detailed view
 	eventHandlers (event) {
 		event.stopPropagation();
-		console.log(event.target.className);
 		var classList = event.target.classList;
 
 		if (classList.contains('senderName') || classList.contains('othersRecievers')) {
@@ -196,15 +206,18 @@ class MailDetail {
 
 	}
 
+	// checks if parent has detail node created or not
 	checkParentcontainerNode () {
 		var node = this.parentContainer.getElementsByClassName('detailedMessage');
 		return node;
 	}
 
+	// update mail data if another card is clicked
 	updateMailDetail (data) {
 		this.data = data;
 	}
 
+	// creates the details block
 	createMailDetail (data) {
 		if (data !== undefined) {
 			this.updateMailDetail(data);
@@ -226,7 +239,6 @@ class MailDetail {
 		this.mailCardWrapperRef.addEventListener('click', (event) => {
 			this.eventHandlers(event)
 		})
-
 		this.parentContainer.appendChild(this.mailCardWrapperRef)
 	}
 

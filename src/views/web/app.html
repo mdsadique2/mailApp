@@ -1,66 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Essential</title>    
+    <head>
+        <title>Essential</title>    
 
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/libs/fontello/css/fontello.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/libs/fontello/css/fontello.css">
 
-    <link rel="stylesheet" type="text/css" href="/static/css/common.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/app.css">
-</head>
+        <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+    </head>
 
 <body>
-    
+    <!-- wrapper for entire app -->
     <div class="appBody">
-        <div class="menuContainer"></div>
+        <!-- provisional section for menu content like inbox and all -->
 
-        <div class="mainContainer">
-            <div class="pageHeader"></div>
-            <div class="messageArea">
-                <div class="messageCardContainer">
-                  <!--   <div class="messageCard" data-messageid="1">
-                      <div class="imageIcons">
-                        <div class="image bg-color-2">S</div>
-                        <i class="tooltip icon icon-star-empty">
-                            <i class="tooltiptext">Mark as important</i>
-                        </i>
-                        <i class="tooltip icon icon-mail">
-                            <i class="tooltiptext">Mark as read</i>
-                        </i>
-                      </div>
-                      <div class="textContainer">
-                        <div class="senderName">Socrates + 1<span class="date">February 19</span></div>
-                        <div class="subject">With regard to our conversation earlier today</div>
-                        <div class="preview">With regard to our conversation earlier today</div>
-                      </div>
-                        <div class="actionConatiner">
-                            <i class="tooltip icon icon-trash">
-                                <span class="tooltiptext right">Delete Message</span>
-                            </i>
-                        </div>
-                    </div> -->
+        <!-- icon-paper-plane -->
+        <!-- icon-doc-text-inv -->
+        <!-- icon-star -->
 
-                </div>
-
-
-
-
-
-                <div class="messageDetailsContainer">
-                   
-
-
-                </div>
+        <div class="menuContainer">
+            <div class="menuItem selectedItem">
+                <i class="icon icon-inbox"></i>  
+                <span>Inbox</span>
+            </div>
+            <div class="menuItem">
+                <i class="icon icon-paper-plane"></i>  
+                <span>Sent</span> 
+            </div>
+            <div class="menuItem">
+                <i class="icon icon-star"></i>
+                <span>Starred</span> 
+            </div>
+            <div class="menuItem">
+                <i class="icon icon-doc-text-inv"></i>  
+                <span>Drafts</span> 
             </div>
         </div>
+        
+        <!-- app area where mails are rendered -->
+        <section class="mainContainer">
+
+            <!-- a header section -->
+            <header class="pageHeader">
+                <i class="icon icon-user-o"></i>  
+                <span class="userName">UserName</span>
+            </header>
+
+            <!-- area to render messages -->
+            <div class="messageArea">
+                <!-- column to render preview cards -->
+                <div class="messageCardContainer">
+                    <div class="placeholderMessage"> No Message to display. </div>
+                </div>
+
+                <!-- column to render detail view of a card -->
+                <div class="messageDetailsContainer">
+                    <div class="placeholderMessage"> Select a message to see the details </div>
+                </div>
+            </div>
+        </section>
         
     </div>
 
 	
 </body>
+
+<!-- Common library methods -->
 <script src="/static/js/common.js"> </script>
+
+<!-- Class of Mail card to generate card entity -->
 <script src="/static/js/MailCard.js"> </script>
+
+<!-- Class for showing detailed view of a mail -->
 <script src="/static/js/MailDetail.js"> </script>
+
+<!-- JS to controll the app and communicate between mail preview cards and detail view -->
 <script src="/static/js/app.js"> </script>
 </html>
